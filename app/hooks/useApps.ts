@@ -2,7 +2,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import type { DiscoveryDataType, DiscoveryRequestType } from '~/types';
 
 export const useApps = (params: DiscoveryRequestType) => {
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, error, isFetching } = useQuery({
     queryKey: ['apps', params],
     placeholderData: keepPreviousData,
     queryFn: async () => {
@@ -20,5 +20,5 @@ export const useApps = (params: DiscoveryRequestType) => {
     },
   });
 
-  return { data, isLoading, error };
+  return { data, isLoading, error, isFetching };
 };
